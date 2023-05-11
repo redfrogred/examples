@@ -21,10 +21,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
        debugShowCheckedModeBanner: false,
-      initialRoute: 'StartPage',
+      // initialRoute: 'StartPage',
+      initialRoute: 'Webview1Page',
       routes: {
         'StartPage': (context) => const StartPage(),
         'EndPage': (context) => const EndPage(),
+        'Webview1Page': (context) => const Webview1Page(),
       },
     );
   }
