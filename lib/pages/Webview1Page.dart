@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 import '../classes/Config.dart';
 import '../classes/Utils.dart';
 import '../pages/_AllPages.dart';
@@ -22,6 +23,7 @@ class _Webview1PageState extends State<Webview1Page> {
 
   // (this page) variables
   static const String _fileName = 'Webview1Page.dart';
+  static late WebViewController _webViewController;
   
   // (this page) init and dispose
   @override
@@ -56,35 +58,32 @@ class _Webview1PageState extends State<Webview1Page> {
         child: Scaffold(
           resizeToAvoidBottomInset: false,  
           appBar: AppBar(
-            title: const Text( _fileName ),
+            title: const Text( _fileName + ' (${Config.appVersion})' ),
             centerTitle: true,
           ), //AppBar
           // drawer: DrawerWidget(),
-          body: Stack(
-            children: [
-              Container(
-                color: Colors.transparent,
-                child: Center(
-                  child: ElevatedButton(
-                    child: Text('Go To ENDPAGE >>'),
-                    onPressed: () {
-                      Utils.log( _fileName, '( $_fileName ) (event) clicked "go to EndPage()"');
-                      Navigator.of(context).push(
-                        MaterialPageRoute(builder: (_) =>EndPage())
-                      );                
-                    },
-                  ),
+          body: Container(
+            child: WebView(
+              initialUrl: 'https://panelsplus.net/other/webview/1/d/',
+              javascriptMode: JavascriptMode.unrestricted,
+              javascriptChannels: {
+                JavascriptChannel(
+                  name: 'Print',
+                  onMessageReceived: (JavascriptMessage message) {
+                    Utils.log( _fileName, message.message);
+                  }
                 ),
-              ),
-              Positioned(
-                right: 10,
-                bottom: 10,
-                child: ( 
-                  //Text( Config.appVersion + ' (${ Config.pops.toString() })' )
-                  Text( context.watch<Controller>().getAppInfo() )
-                ),
-              )
-            ],
+                JavascriptChannel(
+                  name: 'APP_JQUERY_LOADED',
+                  onMessageReceived: (JavascriptMessage message) {
+                    Utils.log( _fileName, message.message);
+                  }
+                ),                
+              },
+              onWebViewCreated: (controller) {
+                _webViewController = controller;
+              },
+            ),
           ),
         ),
       );

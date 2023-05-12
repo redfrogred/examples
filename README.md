@@ -6,6 +6,11 @@ This is a repo for various demos and examples of code. It is for me to re-use, b
 * main
 * starter2 - latest start template
 
+## LEFT OFF
+* got html page passing vae to flutter
+  + using https://panelsplus.net/other/webview/1/d/ and Webview!Page.dart  
+  + now I am making more complicated example...  
+
 ## HISTORY
 * created new project
 * added structure
