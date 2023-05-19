@@ -28,15 +28,6 @@ class Utils {
     return diffNum.toStringAsFixed(1) + ' sec';
   }
 
-  //  return a simplified version of Config.appVersion
-  //  Example: "1.0.a.003" becomes "1.0"
-  static String getSimpleVersion () {
-    final splitted = Config.appVersion.split('.');
-    // return splitted[0] + '.' + splitted[1];
-    return Config.appVersion;
-  }
-
-
   static void log( String filename, String message, [ int num = 1 ]) {
 
     bool highlight = false;
@@ -51,21 +42,21 @@ class Utils {
       if (kDebugMode) {
         print('====================================================');
       }
-      // Config.log += '<tr><td colspan="2"><hr /></td?</tr>';
+      //Config.log += '-----------';
     }
 
     // print the message
       if (kDebugMode) {
         print('(${ timeDiff() }) >> ($filename) $message');
       }
-      // Config.log += '<tr><td class="nowrap">(${ timeDiff() })</td><td>$message</td></tr>';
+      Config.log += '${ timeDiff() } -- $filename\n$message\n\n';
 
     // show highlighted?
     if ( highlight == true ) {
       if (kDebugMode) {
         print('====================================================');
       }
-      // Config.log += '<tr><td colspan="2"><hr /></td?</tr>';
+      //Config.log += '-----------';
     }
 
 

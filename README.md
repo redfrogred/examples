@@ -1,20 +1,29 @@
-# EXAMPLES
+# FMApp_Flutter (version 1.0.alpha.17)
+This repo is the 2023 version of the Fluid Mobile App
 
-This is a repo for various demos and examples of code. It is for me to re-use, but also open to the public.
-## BRANCHES
-
-* main
-* starter2 - latest start template
+## DESCRIPTION
+The goal is to launch with a subset of the overall goals. (You know, like all agile-like.) Goals are: Devices, Workflow, Logout.
 
 ## LEFT OFF
-* got html page passing vae to flutter
-  + using https://panelsplus.net/other/webview/1/d/ and Webview!Page.dart  
-  + now I am making more complicated example...  
+* cleaned code for repo
 
-## HISTORY
-* created new project
-* added structure
-* added webview
+## NEXT STEPS 
+  * make session vars (start, length)
+    + requires Date class
+
+## FUTURE
+  * make Message Alerts
+
+## DONE
+  * tidied code
+  * added Dashboard Messaging
+  * get dialog showing up when blanks
+  * get highlight on web side
+  * add Debug page
+    + with log, too
+
+## REMEMBER
+* To get webvie working:
     + in pubspec.yaml
     + add webview_flutter: ^3.0.4
     
@@ -25,5 +34,5 @@ This is a repo for various demos and examples of code. It is for me to re-use, b
     +       targetSdkVersion 30 //flutter.targetSdkVersion
 
     + then, in android/app/src/main/AndroidManifest.xml
-    + make: <uses-permission android:name="android.permission.INTERNET"/>    
-    
+    + make: <uses-permission android:name="android.permission.INTERNET"/>   
+

@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, camel_case_types
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -8,21 +8,21 @@ import '../classes/Utils.dart';
 import '../pages/_AllPages.dart';
 import '../providers/Controller.dart';
 
-class Webview1Page extends StatefulWidget {
-  const Webview1Page({ super.key });
+class Webview1_Page extends StatefulWidget {
+  const Webview1_Page({ super.key });
 
   @override
-  State createState() => _Webview1PageState();
+  State createState() => _Webview1_PageState();
 }
 
-class _Webview1PageState extends State<Webview1Page> {
+class _Webview1_PageState extends State<Webview1_Page> {
 
-  _Webview1PageState() {
-    Utils.log( 'Webview1Page.dart', '<<< init "${ Config.appName }" version ${ Config.appVersion } >>', 0 );
+  _Webview1_PageState() {
+    Utils.log( 'Webview1_Page.dart', '<<< init  >>', 0 );
   }
 
   // (this page) variables
-  static const String _fileName = 'Webview1Page.dart';
+  static const String _fileName = 'Webview1_Page.dart';
   static late WebViewController _webViewController;
   
   // (this page) init and dispose
