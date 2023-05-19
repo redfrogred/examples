@@ -67,17 +67,10 @@ class Drawer_Widget extends StatelessWidget {
           }
           break;
           case 'Workflow' : {
-            Provider.of<Controller>(context, listen: false).updateDashboardMssg();           
+            //Provider.of<Controller>(context, listen: false).updateDashboardMssg();           
             Timer(Duration( milliseconds: Config.shortDelay), () {
-              Navigator.of(context).popAndPushNamed('Workflow_Page');
+              Navigator.of(context).popAndPushNamed('End_Page');
             });
-           /* 
-            Navigator.pop(context);
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const Workflow_Page()),
-            );
-           */
 
           }
           break;                    
@@ -106,7 +99,7 @@ class Drawer_Widget extends StatelessWidget {
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                     image:
-                        AssetImage("assets/images/fluid_logo_darkmode_1.png"),
+                        AssetImage("assets/images/drawer_logo.png"),
                     fit: BoxFit.scaleDown,
                     alignment: Alignment.center,
                   ),

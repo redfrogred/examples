@@ -69,7 +69,7 @@ class _End_PageState extends State<End_Page> {
                   child: ElevatedButton(
                     child: Text('<< Go To STARTPAGE'),
                     onPressed: () {
-                      Utils.log( _fileName, '( $_fileName ) (event) clicked "go to StartPage()"');
+                      Utils.log( _fileName, '( $_fileName ) (event) clicked "go to Star_tPage()"');
                       Navigator.of(context).push(
                         MaterialPageRoute(builder: (_) => Start_Page())
                       );                

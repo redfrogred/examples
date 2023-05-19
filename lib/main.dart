@@ -44,20 +44,13 @@ class MyApp extends StatelessWidget {
           ),
       ),      
       initialRoute: 'Start_Page',
-      //initialRoute: 'Workflow_Fill_Page',
       //initialRoute: 'DebugPage',
-      //initialRoute: 'Webview2Page',
-      //initialRoute: 'DashboardPage',
       routes: {
         'Start_Page': (context) => const Start_Page(),
         'End_Page': (context) => const End_Page(),
-        'Dashboard_Page': (context) => Dashboard_Page(),
+        'Dashboard_Page': (context) => const Dashboard_Page(),
         'Debug_Page': (context) => const Debug_Page(),
         'Log_Page': (context) => const Log_Page(),
-        'Webview1_Page': (context) => const Webview1_Page(),
-        'Webview2_Page': (context) => const Webview2_Page(),
-        'Workflow_Page': (context) => const Workflow_Page(),
-        'Workflow_Fill_Page': (context) => const Workflow_Fill_Page(),
       },
     );
   }
