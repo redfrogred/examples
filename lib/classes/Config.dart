@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class Config {
   
   static const  String    appName                = "examples";
-  static const  String    appVersion             = "1.0.alpha.3";
+  static const  String    appVersion             = "1.0.alpha.2";
   static String           log                    = "";           //  keep a log of what is sent to console
   
   static bool             appDebugActive         = true;         //  should debugging features be shown? 
