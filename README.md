@@ -1,29 +1,17 @@
-# FMApp_Flutter (version 1.0.alpha.17)
-This repo is the 2023 version of the Fluid Mobile App
-
-## DESCRIPTION
-The goal is to launch with a subset of the overall goals. (You know, like all agile-like.) Goals are: Devices, Workflow, Logout.
+# examples (version 1.0.alpha.3)
+This repo is a whack of examples (including how t start a project)
 
 ## LEFT OFF
-* cleaned code for repo
+* got html log
 
 ## NEXT STEPS 
-  * make session vars (start, length)
-    + requires Date class
+  * make new pages in log yellow (or highlighted)
 
 ## FUTURE
-  * make Message Alerts
-
-## DONE
-  * tidied code
-  * added Dashboard Messaging
-  * get dialog showing up when blanks
-  * get highlight on web side
-  * add Debug page
-    + with log, too
+  * ?
 
 ## REMEMBER
-* To get webvie working:
+* To get webview working:
     + in pubspec.yaml
     + add webview_flutter: ^3.0.4
     

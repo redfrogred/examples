@@ -18,7 +18,7 @@ class Start_Page extends StatefulWidget {
 class _Start_PageState extends State<Start_Page> {
 
   _Start_PageState() {
-    Utils.log( 'Start_Page.dart', '<<< init "${ Config.appName }" version ${ Config.appVersion } >>', 0 );
+    Utils.log( 'Start_Page.dart', '<< init "${ Config.appName }" version ${ Config.appVersion } >>', 0 );
   }
 
   // (this page) variables

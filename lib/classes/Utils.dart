@@ -25,7 +25,7 @@ class Utils {
     else {
       diffNum = diff * .001;
     }
-    return diffNum.toStringAsFixed(1) + ' sec';
+    return diffNum.toStringAsFixed(1);
   }
 
   static void log( String filename, String message, [ int num = 1 ]) {
@@ -49,7 +49,7 @@ class Utils {
       if (kDebugMode) {
         print('(${ timeDiff() }) >> ($filename) $message');
       }
-      Config.log += '${ timeDiff() } -- $filename\n$message\n\n';
+      Config.log += '<tr class="timestamp"><td class="yellow">${ timeDiff() }</td><td><b>$filename</b></span></td></tr><tr class="description"><td></td><td class="ltgrey">$message</td></tr>';
 
     // show highlighted?
     if ( highlight == true ) {
