@@ -5,6 +5,9 @@ import './Config.dart';
 
 class Utils {
 
+  static String _lastFileName = '';
+  static String str = '';
+
   // timestamp stuff
   static int beginTimeStamp = DateTime.now().millisecondsSinceEpoch;
 
@@ -49,7 +52,16 @@ class Utils {
       if (kDebugMode) {
         print('(${ timeDiff() }) >> ($filename) $message');
       }
-      Config.log += '<tr class="timestamp"><td class="yellow">${ timeDiff() }</td><td><b>$filename</b></span></td></tr><tr class="description"><td></td><td class="ltgrey">$message</td></tr>';
+      // if the calling filename has changed, highlight it in blue
+      if ( filename == _lastFileName ) {
+        str = '<b>$filename</b>';
+      }
+      else {
+        str = '<b class="blue">$filename</b>';
+      }
+      _lastFileName = filename;
+      
+      Config.log += '<tr class="timestamp"><td class="yellow">${ timeDiff() }</td><td><b>$str</b></span></td></tr><tr class="description"><td></td><td class="ltgrey">$message</td></tr>';
 
     // show highlighted?
     if ( highlight == true ) {

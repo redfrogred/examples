@@ -22,6 +22,7 @@ class _Debug_PageState extends State<Debug_Page> {
 
   // (this page) variables
   static const String _fileName = 'Debug_Page.dart';
+  static const double _buttonWidth = 120;     // the width of the buttons on the left
   
   // (this page) init and dispose
   @override
@@ -67,64 +68,156 @@ class _Debug_PageState extends State<Debug_Page> {
                 color: Colors.transparent,
                 child: Column(
                   children: [
+
+
+                    Container(
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(0,50,0,10),
+                        child: Text('~ Log functions ~'),
+                      ),
+                    ),                    
                     Row(
                       children: [ 
                         SizedBox(
-                          width: 90,
-                          height: 50,
-                          child: Padding(
-                            padding: EdgeInsets.fromLTRB(15,12,12,0),
-                            child: ElevatedButton(
-                              child: Text('Off'),
-                              onPressed: () {},
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(0,12,12,0),
-                          child: Text('Toggle "Config.appDebugActive"'),
-                        ),                        
-                      ]  
-                    ),
-                    Row(
-                      children: [ 
-                        SizedBox(
-                          width: 90,
-                          height: 50,
-                          child: Padding(
-                            padding: EdgeInsets.fromLTRB(15,12,12,0),
-                            child: ElevatedButton(
-                              child: Text('Off'),
-                              onPressed: () {},
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(0,12,12,0),
-                          child: Text('Toggle "Config.appDkMdActive"'),
-                        ),                        
-                      ] 
-                    ),    
-                    Row(
-                      children: [ 
-                        SizedBox(
-                          width: 90,
+                          width: _buttonWidth,
                           height: 50,
                           child: Padding(
                             padding: EdgeInsets.fromLTRB(15,12,12,0),
                             child: ElevatedButton(
                               child: Text('Log'),
                               onPressed: () {
-                                Utils.log( _fileName, '( $_fileName ) (event) clicked "go to Log_Page()"');
+                                Utils.log( _fileName, '(event) clicked "go to Log_Page()"');
                                 Navigator.of(context).push(
                                   MaterialPageRoute(builder: (_) => Log_Page())
                                 );      
                               },
                             ),
                           ),
-                        )                     
+                        ),
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(12,12,12,0),
+                          child: Text('show log'),
+                        ),                                               
                       ] 
-                    ),                                    
+                    ),   
+                    Row(
+                      children: [ 
+                        SizedBox(
+                          width: _buttonWidth,
+                          height: 50,
+                          child: Padding(
+                            padding: EdgeInsets.fromLTRB(15,12,12,0),
+                            child: ElevatedButton(
+                              child: Text('Stamp'),
+                              onPressed: () {
+                                Utils.log( _fileName, '(event) clicked "go to Log_Page()"');
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(builder: (_) => Log_Page())
+                                );      
+                              },
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(12,12,12,0),
+                          child: Text('mark with timestamp'),
+                        ),                                               
+                      ] 
+                    ),    
+                    Row(
+                      children: [ 
+                        SizedBox(
+                          width: _buttonWidth,
+                          height: 50,
+                          child: Padding(
+                            padding: EdgeInsets.fromLTRB(15,12,12,0),
+                            child: ElevatedButton(
+                              child: Text('Clear'),
+                              onPressed: () {
+                                Utils.log( _fileName, '(event) clicked "go to Log_Page()"');
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(builder: (_) => Log_Page())
+                                );      
+                              },
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(12,12,12,0),
+                          child: Text('clear log'),
+                        ),                                               
+                      ] 
+                    ),                                                                       
+
+
+
+
+
+
+
+                    Container(
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(0,50,0,10),
+                        child: Text('~ Other functions ~'),
+                      ),
+                    ),
+                    Row(
+                      children: [ 
+                        SizedBox(
+                          width: _buttonWidth,
+                          height: 50,
+                          child: Padding(
+                            padding: EdgeInsets.fromLTRB(15,12,12,0),
+                            child: ElevatedButton(
+                              child: Text('Off'),
+                              onPressed: () {},
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(12,12,12,0),
+                          child: Text('toggle "debug" mode'),
+                        ),                        
+                      ]  
+                    ),
+                    Row(
+                      children: [ 
+                        SizedBox(
+                          width: _buttonWidth,
+                          height: 50,
+                          child: Padding(
+                            padding: EdgeInsets.fromLTRB(15,12,12,0),
+                            child: ElevatedButton(
+                              child: Text('Reset'),
+                              onPressed: () {},
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(12,12,12,0),
+                          child: Text('reset app'),
+                        ),                        
+                      ] 
+                    ),   
+                    Row(
+                      children: [ 
+                        SizedBox(
+                          width: _buttonWidth,
+                          height: 50,
+                          child: Padding(
+                            padding: EdgeInsets.fromLTRB(15,12,12,0),
+                            child: ElevatedButton(
+                              child: Text('Quit'),
+                              onPressed: () {},
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(12,12,12,0),
+                          child: Text('quit app'),
+                        ),                        
+                      ] 
+                    ),                      
                   ]
                 ),
               ),
