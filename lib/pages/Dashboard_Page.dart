@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, camel_case_types
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -6,22 +6,23 @@ import '../classes/Config.dart';
 import '../classes/Utils.dart';
 import '../pages/_AllPages.dart';
 import '../providers/Controller.dart';
+import '../widgets/_AllWidgets.dart';
 
-class StartPage extends StatefulWidget {
-  const StartPage({ super.key });
+class Dashboard_Page extends StatefulWidget {
+  const Dashboard_Page({ super.key });
 
   @override
-  State createState() => _StartPageState();
+  State createState() => _Dashboard_PageState();
 }
 
-class _StartPageState extends State<StartPage> {
+class _Dashboard_PageState extends State<Dashboard_Page> {
 
-  _StartPageState() {
-    Utils.log( 'StartPage.dart', '<<< init "${ Config.appName }" version ${ Config.appVersion } >>', 0 );
+  _Dashboard_PageState() {
+    Utils.log( 'Dashboard_Page.dart', '<<< init  >>', 0 );
   }
 
   // (this page) variables
-  static const String _fileName = 'StartPage.dart';
+  static const String _fileName = 'Dashboard_Page.dart';
   
   // (this page) init and dispose
   @override
@@ -55,22 +56,23 @@ class _StartPageState extends State<StartPage> {
     return SafeArea(
         child: Scaffold(
           resizeToAvoidBottomInset: false,  
+          backgroundColor: Config.mainBackgroundColor,
           appBar: AppBar(
             title: const Text( _fileName ),
             centerTitle: true,
           ), //AppBar
-          // drawer: DrawerWidget(),
+          drawer: Drawer_Widget(),
           body: Stack(
             children: [
               Container(
                 color: Colors.transparent,
                 child: Center(
                   child: ElevatedButton(
-                    child: Text('Go To ENDPAGE >>'),
+                    child: Text('<< Go To STARTPAGE'),
                     onPressed: () {
-                      Utils.log( _fileName, '( $_fileName ) (event) clicked "go to EndPage()"');
+                      Utils.log( _fileName, '( $_fileName ) (event) clicked "go to Star_tPage()"');
                       Navigator.of(context).push(
-                        MaterialPageRoute(builder: (_) =>EndPage())
+                        MaterialPageRoute(builder: (_) => Start_Page())
                       );                
                     },
                   ),

@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, camel_case_types
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -7,21 +7,21 @@ import '../classes/Utils.dart';
 import '../pages/_AllPages.dart';
 import '../providers/Controller.dart';
 
-class EndPage extends StatefulWidget {
-  const EndPage({ super.key });
+class End_Page extends StatefulWidget {
+  const End_Page({ super.key });
 
   @override
-  State createState() => _EndPageState();
+  State createState() => _End_PageState();
 }
 
-class _EndPageState extends State<EndPage> {
+class _End_PageState extends State<End_Page> {
 
-  _EndPageState() {
-    Utils.log( 'EndPage.dart', '<<< init "${ Config.appName }" version ${ Config.appVersion } >>', 0 );
+  _End_PageState() {
+    Utils.log( 'End_Page.dart', '<<< init  >>', 0 );
   }
 
   // (this page) variables
-  static const String _fileName = 'EndPage.dart';
+  static const String _fileName = 'End_Page.dart';
   
   // (this page) init and dispose
   @override
@@ -55,6 +55,7 @@ class _EndPageState extends State<EndPage> {
     return SafeArea(
         child: Scaffold(
           resizeToAvoidBottomInset: false,  
+          backgroundColor: Config.mainBackgroundColor,
           appBar: AppBar(
             title: const Text( _fileName ),
             centerTitle: true,
@@ -68,9 +69,9 @@ class _EndPageState extends State<EndPage> {
                   child: ElevatedButton(
                     child: Text('<< Go To STARTPAGE'),
                     onPressed: () {
-                      Utils.log( _fileName, '( $_fileName ) (event) clicked "go to StartPage()"');
+                      Utils.log( _fileName, '( $_fileName ) (event) clicked "go to Star_tPage()"');
                       Navigator.of(context).push(
-                        MaterialPageRoute(builder: (_) => StartPage())
+                        MaterialPageRoute(builder: (_) => Start_Page())
                       );                
                     },
                   ),

@@ -14,7 +14,10 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   provider: ^6.0.2
-  
+  webview_flutter: ^3.0.4
+  page_transition: ^2.0.4
+  intl: ^0.18.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -24,5 +27,6 @@ dev_dependencies:
 flutter:
 
   uses-material-design: true
-  #assets:
-  #  - assets/html/demo.html
+  assets:
+    - assets/images/ 
+    - assets/html/
