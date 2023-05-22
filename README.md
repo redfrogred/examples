@@ -2,10 +2,10 @@
 This repo is a whack of examples (including how t start a project)
 
 ## LEFT OFF
-* got html log
+* in log, making friendly time
 
 ## NEXT STEPS 
-  * make new pages in log yellow (or highlighted)
+  * edit CSS
 
 ## FUTURE
   * ?

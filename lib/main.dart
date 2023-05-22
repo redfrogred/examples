@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
             ),
           ),
       ),      
-      initialRoute: 'Start_Page',
+      initialRoute: 'Dashboard_Page',
       //initialRoute: 'Dummy1_Page',
       routes: {
         'Start_Page': (context) => const Start_Page(),

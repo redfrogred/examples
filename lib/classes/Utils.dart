@@ -31,6 +31,22 @@ class Utils {
     return diffNum.toStringAsFixed(1);
   }
 
+  static String friendlyTimeDiff () {
+    int diff = timeStamp() - getBeginTimeStamp();
+    double minute = 0;
+    if ( diff < 60000 ) {
+      double seconds = diff * .001;
+      return seconds.toStringAsFixed(1) +'s';
+    }
+    else {
+      minute = diff/60000;
+      double remainder = diff%60000;
+      remainder = remainder*.001;
+      return '<span class="tiny">' + (minute.toInt()).toString() + 'm</span><br />' + remainder.toStringAsFixed(1) +'s';
+    }
+    
+  }
+
   static void log( String filename, String message, [ int num = 1 ]) {
 
     bool highlight = false;
@@ -61,7 +77,7 @@ class Utils {
       }
       _lastFileName = filename;
       
-      Config.log += '<tr class="timestamp"><td class="yellow">${ timeDiff() }</td><td><b>$str</b></span></td></tr><tr class="description"><td></td><td class="ltgrey">$message</td></tr>';
+      Config.log += '<tr class="timestamp"><td class="yellow" rowspan="2">${ friendlyTimeDiff() }</td><td><b>$str</b></span></td></tr><tr class="description"><td class="ltgrey">$message</td></tr>';
 
     // show highlighted?
     if ( highlight == true ) {
