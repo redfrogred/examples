@@ -1,11 +1,15 @@
 // ignore_for_file: file_names
+import 'package:intl/intl.dart';
 
 import 'package:flutter/foundation.dart';
 import './Config.dart';
 
 class Utils {
 
+  // (this class) variables
+  static const String _fileName = 'Utils.dart'; 
   static String _lastFileName = '';
+  static int _stampCount = 1;
   static String str = '';
 
   // timestamp stuff
@@ -92,7 +96,19 @@ class Utils {
 
   static void clearLog() {
     Config.log = '';
+    Utils.log( _fileName,'clearLog()' );
   }
+
+  static void stampLog() {
+    DateTime date = DateTime.now();
+    var formatter = DateFormat('E MMM dd @ HH:mm a');
+    //Thur May 22 @ 11:41AM
+    Config.log += '<tr><td colspan="2"><hr /><b>(${ _stampCount.toString() }) ${ formatter.format(date).toString() }</b><hr/></td></tr>';
+    _stampCount++; 
+    // don't show loggin of stamp
+    //Utils.log( _fileName,'stampLog()' );
+  }
+
 
   //  The "truncateStr" accepts 3 parameters:
   //    1 - the String to be chopped

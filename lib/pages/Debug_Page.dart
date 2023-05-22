@@ -110,10 +110,9 @@ class _Debug_PageState extends State<Debug_Page> {
                             child: ElevatedButton(
                               child: Text('Stamp'),
                               onPressed: () {
-                                Utils.log( _fileName, '(event) clicked "go to Log_Page()"');
-                                Navigator.of(context).push(
-                                  MaterialPageRoute(builder: (_) => Log_Page())
-                                );      
+                                // don't show loggin of stamp
+                                //Utils.log( _fileName, '(event) clicked "Utils.stampLog()"');
+                                Utils.stampLog();     
                               },
                             ),
                           ),
@@ -134,10 +133,8 @@ class _Debug_PageState extends State<Debug_Page> {
                             child: ElevatedButton(
                               child: Text('Clear'),
                               onPressed: () {
-                                Utils.log( _fileName, '(event) clicked "go to Log_Page()"');
-                                Navigator.of(context).push(
-                                  MaterialPageRoute(builder: (_) => Log_Page())
-                                );      
+                                Utils.log( _fileName, '(event) clicked "Utils.clearLog()"');
+                                Utils.clearLog();    
                               },
                             ),
                           ),
