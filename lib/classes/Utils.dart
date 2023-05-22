@@ -103,7 +103,7 @@ class Utils {
     DateTime date = DateTime.now();
     var formatter = DateFormat('E MMM dd @ HH:mm a');
     //Thur May 22 @ 11:41AM
-    Config.log += '<tr><td colspan="2"><hr /><b>(${ _stampCount.toString() }) ${ formatter.format(date).toString() }</b><hr/></td></tr>';
+    Config.log += '<tr><td colspan="2"><hr /><b>(${ _stampCount.toString() }) ${ formatter.format(date).toString() }</b><hr style="margin-bottom: .5em;"/></td></tr>';
     _stampCount++; 
     // don't show loggin of stamp
     //Utils.log( _fileName,'stampLog()' );
