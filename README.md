@@ -1,11 +1,11 @@
-# examples (version 1.0.alpha.3)
+# examples (version 1.0.alpha.4)
 This repo is a whack of examples (including how t start a project)
 
 ## LEFT OFF
-* in log, making friendly time
+* made animated list example
 
 ## NEXT STEPS 
-  * edit CSS
+  * need to figure out how to update list item count in animated list...
 
 ## FUTURE
   * ?

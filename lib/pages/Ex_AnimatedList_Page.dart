@@ -1,11 +1,17 @@
 // ignore_for_file: prefer_const_constructors, camel_case_types
 
+
+//  From:
+//  https://www.youtube.com/watch?v=E3SQOqUq8Mg
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../classes/Config.dart';
 import '../classes/Utils.dart';
 import '../pages/_AllPages.dart';
+import '../widgets/_AllWidgets.dart';
 import '../providers/Controller.dart';
+import '../classes/ListItem.dart';
 
 class Ex_AnimatedList_Page extends StatefulWidget {
   const Ex_AnimatedList_Page({ super.key });
@@ -22,7 +28,10 @@ class _Ex_AnimatedList_PageState extends State<Ex_AnimatedList_Page> {
 
   // (this page) variables
   static const String _fileName = 'Ex_AnimatedList_Page.dart';
-  
+  // animated list stuff
+    final listKey = GlobalKey<AnimatedListState>();
+  final List<ListItem> items = List.from(Config.listItems);
+
   // (this page) init and dispose
   @override
   void initState() {
@@ -40,6 +49,20 @@ class _Ex_AnimatedList_PageState extends State<Ex_AnimatedList_Page> {
   // (this page) methods
   void _buildTriggered() {
     Utils.log( _fileName, ' _buildTriggered()');
+  }
+
+  void removeItem(int index) {
+    final removedItem = items[index];
+    items.removeAt(index);
+    listKey.currentState!.removeItem(
+      index,
+      (context, animation) => ListItemWidget(
+        item: removedItem,
+        animation: animation,
+        onClicked: () {},
+      ),
+      duration: Duration(milliseconds: 2000),
+    );
   }
   
   void _addPostFrameCallbackTriggered( context ) {
@@ -61,33 +84,77 @@ class _Ex_AnimatedList_PageState extends State<Ex_AnimatedList_Page> {
             centerTitle: true,
           ), //AppBar
           // drawer: DrawerWidget(),
-          body: Stack(
+          body: 
+          
+          ( Config.listItems.isEmpty ) 
+          ?
+            Center(child: Text('no items'))
+          :
+          Column(
             children: [
               Container(
-                color: Colors.transparent,
-                child: Center(
-                  child: ElevatedButton(
-                    child: Text('<< Go To STARTPAGE'),
-                    onPressed: () {
-                      Utils.log( _fileName, '( $_fileName ) (event) clicked "go to Star_tPage()"');
-                      Navigator.of(context).push(
-                        MaterialPageRoute(builder: (_) => Start_Page())
-                      );                
-                    },
+                height: 50,
+                child: Center(child: Text ( Config.listItems.length.toString() )),
+              ),
+              Expanded(
+                child: AnimatedList(
+                  key: listKey,
+                  initialItemCount: items.length,
+                  itemBuilder: (context, index, animation ) => ListItemWidget(
+                    item: items[index],
+                    animation: animation,
+                    onClicked: () { removeItem(index);},
                   ),
                 ),
               ),
-              Positioned(
-                right: 10,
-                bottom: 10,
-                child: ( 
-                  //Text( Config.appVersion + ' (${ Config.pops.toString() })' )
-                  Text( context.watch<Controller>().getAppInfo() )
-                ),
-              )
             ],
           ),
+
         ),
       );
   }
+}
+
+class ListItemWidget extends StatelessWidget {
+  final ListItem item;
+  final Animation<double> animation;
+  final VoidCallback? onClicked;
+
+  const ListItemWidget({
+    required this.item,
+    required this.animation,
+    required this.onClicked,
+    Key? key,
+  }) : super(key: key);
+
+  @override 
+  Widget build(BuildContext context) => SizeTransition( 
+    sizeFactor: animation,
+    child: buildItem(),
+  );
+
+  Widget buildItem() => Container(
+    margin: EdgeInsets.all(8),
+    color: Colors.green,
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(width: double.infinity, child: Text( item.title, style: TextStyle( fontWeight: FontWeight.bold, fontSize: 20, ))),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(width: double.infinity, child: Text( item.description)),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(width: double.infinity, child: ElevatedButton(
+            child: Text('remove'),
+            onPressed: onClicked, // WILLFIX
+          )),
+        ),        
+      ],
+    ),
+  );  
 }
