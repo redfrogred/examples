@@ -10,21 +10,21 @@ import '../classes/Utils.dart';
 import '../pages/_AllPages.dart';
 import '../providers/Controller.dart';
 
-class Dummy1_Page extends StatefulWidget {
-  const Dummy1_Page({ super.key });
+class Ex_HTML_Page extends StatefulWidget {
+  const Ex_HTML_Page({ super.key });
 
   @override
-  State createState() => _Dummy1_PageState();
+  State createState() => _Ex_HTML_PageState();
 }
 
-class _Dummy1_PageState extends State<Dummy1_Page> {
+class _Ex_HTML_PageState extends State<Ex_HTML_Page> {
 
-  _Dummy1_PageState() {
-    Utils.log( 'Dummy1_Page.dart', '<<< init  >>', 0 );
+  _Ex_HTML_PageState() {
+    Utils.log( 'Ex_HTML_Page.dart', '<<< init  >>', 0 );
   }
 
   // (this page) variables
-  static const String _fileName = 'Dummy1_Page.dart';
+  static const String _fileName = 'Ex_HTML_Page.dart';
   // webview stuff
   static late WebViewController _webViewController;  
   static const String kExamplePage = '''
