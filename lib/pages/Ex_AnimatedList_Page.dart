@@ -61,6 +61,7 @@ class _Ex_AnimatedList_PageState extends State<Ex_AnimatedList_Page> {
         item: removedItem,
         animation: animation,
         onClicked: () {},
+        num: index,
       ),
       duration: Duration(milliseconds: 333),
       
@@ -110,6 +111,7 @@ class _Ex_AnimatedList_PageState extends State<Ex_AnimatedList_Page> {
                     item: items[index],
                     animation: animation,
                     onClicked: () { removeItem(index);},
+                    num: index,
                   ),
                 ),
               ),
@@ -125,12 +127,15 @@ class ListItemWidget extends StatelessWidget {
   final ListItem item;
   final Animation<double> animation;
   final VoidCallback? onClicked;
+  final int num;
 
   const ListItemWidget({
     required this.item,
     required this.animation,
     required this.onClicked,
+    required this.num,
     Key? key,
+    
   }) : super(key: key);
 
   @override 
@@ -156,10 +161,19 @@ class ListItemWidget extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Container(width: double.infinity, child: ElevatedButton(
-            child: Text('remove'),
+            child: Text('remove ${ num.toString() }'),
             onPressed: onClicked, // WILLFIX
           )),
-        ),        
+        ),    
+        ( num < Config.listItems.length-1 ) ? SizedBox(height: 1) : 
+        Container(
+          color: Config.mainBackgroundColor,
+          width: double.infinity,
+          height: 100,
+          child: Center(
+            // child: Text('( end of alerts )'),
+          )  
+        )   
       ],
     ),
   );  
