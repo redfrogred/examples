@@ -29,8 +29,9 @@ class _Ex_AnimatedList_PageState extends State<Ex_AnimatedList_Page> {
   // (this page) variables
   static const String _fileName = 'Ex_AnimatedList_Page.dart';
   // animated list stuff
-    final listKey = GlobalKey<AnimatedListState>();
+  final listKey = GlobalKey<AnimatedListState>();
   final List<ListItem> items = List.from(Config.listItems);
+  int _count = Config.listItems.length;
 
   // (this page) init and dispose
   @override
@@ -61,8 +62,13 @@ class _Ex_AnimatedList_PageState extends State<Ex_AnimatedList_Page> {
         animation: animation,
         onClicked: () {},
       ),
-      duration: Duration(milliseconds: 2000),
+      duration: Duration(milliseconds: 333),
+      
     );
+    Utils.log( _fileName, 'items = ' + items.length.toString());
+    setState(() {
+      _count = items.length;
+    });
   }
   
   void _addPostFrameCallbackTriggered( context ) {
@@ -86,7 +92,7 @@ class _Ex_AnimatedList_PageState extends State<Ex_AnimatedList_Page> {
           // drawer: DrawerWidget(),
           body: 
           
-          ( Config.listItems.isEmpty ) 
+          ( _count == 0 ) 
           ?
             Center(child: Text('no items'))
           :
@@ -94,7 +100,7 @@ class _Ex_AnimatedList_PageState extends State<Ex_AnimatedList_Page> {
             children: [
               Container(
                 height: 50,
-                child: Center(child: Text ( Config.listItems.length.toString() )),
+                child: Center(child: Text ( _count.toString() )),
               ),
               Expanded(
                 child: AnimatedList(
