@@ -16,5 +16,13 @@ class Controller with ChangeNotifier {
       return Config.appVersion;
     }
 
+    String getAlertsNumberStr () {
+      if ( Config.alertMssg.length == 1 ) {
+        return 'You have 1 alert';
+      }
+      else {
+        return 'You have ${ Config.alertMssg.length.toString() } alerts';
+      }          
+    }
 
 }

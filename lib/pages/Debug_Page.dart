@@ -6,6 +6,7 @@ import '../classes/Config.dart';
 import '../classes/Utils.dart';
 import '../pages/_AllPages.dart';
 import '../providers/Controller.dart';
+import '../classes/AlertItem.dart';
 
 class Debug_Page extends StatefulWidget {
   const Debug_Page({ super.key });
@@ -166,14 +167,17 @@ class _Debug_PageState extends State<Debug_Page> {
                           child: Padding(
                             padding: EdgeInsets.fromLTRB(15,12,12,0),
                             child: ElevatedButton(
-                              child: Text('Off'),
-                              onPressed: () {},
+                              child: Text('bump'),
+                              onPressed: () {
+                                AlertItem alertItem = AlertItem(title: 'title', description: 'description', alertLevel: 1, alertType: 1, alertAction: 'alertAction', details: 'details');
+                                Config.alertItems.add(alertItem);
+                              },
                             ),
                           ),
                         ),
                         Padding(
                           padding: EdgeInsets.fromLTRB(12,12,12,0),
-                          child: Text('toggle "debug" mode'),
+                          child: Text('add alert'),
                         ),                        
                       ]  
                     ),

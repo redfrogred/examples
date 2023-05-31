@@ -44,8 +44,8 @@ class MyApp extends StatelessWidget {
           ),
       ),      
       //initialRoute: 'Dashboard_Page',
-      //initialRoute: 'Start_Page',
-      initialRoute: 'Ex_AnimatedList_Page',
+      initialRoute: 'Start_Page',
+      //initialRoute: 'Ex_AnimatedList_Page',
       routes: {
         'Start_Page': (context) => const Start_Page(),
         'End_Page': (context) => const End_Page(),

@@ -55,11 +55,11 @@ class Drawer_Widget extends StatelessWidget {
           }          
           break;
           case 'My Location' : {
-            //Navigator.of(context).popAndPushNamed('Devices_Page');
+            Navigator.of(context).popAndPushNamed('Ex_AnimatedList_Page');
           }      
           break;          
           case 'Settings' : {
-            // Navigator.of(context).popAndPushNamed('Settings_Page');
+            Navigator.of(context).popAndPushNamed('Ex_AnimatedList_Page');
           }
           break;
           case 'Debug' : {

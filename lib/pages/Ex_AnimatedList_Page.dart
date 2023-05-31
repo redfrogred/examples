@@ -11,7 +11,7 @@ import '../classes/Utils.dart';
 import '../pages/_AllPages.dart';
 import '../widgets/_AllWidgets.dart';
 import '../providers/Controller.dart';
-import '../classes/ListItem.dart';
+import '../classes/AlertItem.dart';
 
 class Ex_AnimatedList_Page extends StatefulWidget {
   const Ex_AnimatedList_Page({ super.key });
@@ -30,8 +30,8 @@ class _Ex_AnimatedList_PageState extends State<Ex_AnimatedList_Page> {
   static const String _fileName = 'Ex_AnimatedList_Page.dart';
   // animated list stuff
   final listKey = GlobalKey<AnimatedListState>();
-  final List<ListItem> items = List.from(Config.listItems);
-  int _count = Config.listItems.length;
+  final List<AlertItem> items = List.from(Config.alertItems);
+  int _count = Config.alertItems.length;
 
   // (this page) init and dispose
   @override
@@ -57,7 +57,7 @@ class _Ex_AnimatedList_PageState extends State<Ex_AnimatedList_Page> {
     items.removeAt(index);
     listKey.currentState!.removeItem(
       index,
-      (context, animation) => ListItemWidget(
+      (context, animation) => AlertItemWidget(
         item: removedItem,
         animation: animation,
         onClicked: () {},
@@ -70,6 +70,16 @@ class _Ex_AnimatedList_PageState extends State<Ex_AnimatedList_Page> {
     setState(() {
       _count = items.length;
     });
+  }
+
+  String _showCount() {
+    if ( _count == 1 ) {
+      return 'You have 1 alert';
+    }
+    else {
+      return 'You have ${_count.toString() } alerts';
+    }
+    
   }
   
   void _addPostFrameCallbackTriggered( context ) {
@@ -95,19 +105,19 @@ class _Ex_AnimatedList_PageState extends State<Ex_AnimatedList_Page> {
           
           ( _count == 0 ) 
           ?
-            Center(child: Text('no items'))
+            Center(child: Text('( no alerts )'))
           :
           Column(
             children: [
               Container(
                 height: 50,
-                child: Center(child: Text ( _count.toString() )),
+                child: Center(child: Text ( _showCount() )),
               ),
               Expanded(
                 child: AnimatedList(
                   key: listKey,
                   initialItemCount: items.length,
-                  itemBuilder: (context, index, animation ) => ListItemWidget(
+                  itemBuilder: (context, index, animation ) => AlertItemWidget(
                     item: items[index],
                     animation: animation,
                     onClicked: () { removeItem(index);},
@@ -123,19 +133,18 @@ class _Ex_AnimatedList_PageState extends State<Ex_AnimatedList_Page> {
   }
 }
 
-class ListItemWidget extends StatelessWidget {
-  final ListItem item;
+class AlertItemWidget extends StatelessWidget {
+  final AlertItem item;
   final Animation<double> animation;
   final VoidCallback? onClicked;
   final int num;
 
-  const ListItemWidget({
+  const AlertItemWidget({
     required this.item,
     required this.animation,
     required this.onClicked,
     required this.num,
     Key? key,
-    
   }) : super(key: key);
 
   @override 
@@ -145,36 +154,60 @@ class ListItemWidget extends StatelessWidget {
   );
 
   Widget buildItem() => Container(
-    margin: EdgeInsets.all(8),
-    color: Colors.green,
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Container(width: double.infinity, child: Text( item.title, style: TextStyle( fontWeight: FontWeight.bold, fontSize: 20, ))),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Container(width: double.infinity, child: Text( item.description)),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Container(width: double.infinity, child: ElevatedButton(
-            child: Text('remove ${ num.toString() }'),
-            onPressed: onClicked, // WILLFIX
-          )),
-        ),    
-        ( num < Config.listItems.length-1 ) ? SizedBox(height: 1) : 
-        Container(
-          color: Config.mainBackgroundColor,
           width: double.infinity,
-          height: 100,
-          child: Center(
-            // child: Text('( end of alerts )'),
-          )  
-        )   
-      ],
-    ),
-  );  
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(15,9,15,0),
+            child: Column(
+              children: [
+                //Text( Config.alertMssg[index], style: TextStyle( color: Colors.red )),
+                SizedBox(
+                  width: double.infinity,
+                  child: Text( item.title, style: TextStyle( color: Colors.red ))),
+                SizedBox(
+                  width: double.infinity,
+                  child: Text( item.description, style: TextStyle( color: Colors.white ))),
+                SizedBox(
+                  width: double.infinity,
+                  child: Row(
+                    children: [
+                      Text( item.details, style: TextStyle( color: Config.accent1Color )),
+                    ],
+                  ),
+                ),       
+                SizedBox(
+                  width: double.infinity,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(0,9,0,0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        ElevatedButton(
+                          onPressed: () {}, 
+                          child: Text('retry submission'),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Config.statusColor[3],
+                          ),    
+                      ),
+                      TextButton(
+                          onPressed: onClicked, 
+                          child: Text('dismiss'),
+                          style: TextButton.styleFrom(
+                            textStyle: const TextStyle(
+                              decoration: TextDecoration.underline,
+                            ),
+                            foregroundColor: Config.accent1Color,
+                          )
+                        ),                                          
+                      ],
+                    ),
+                  ),
+                ),       
+                Divider(
+                  color: Config.statusColor[3],
+                  thickness: 2,
+                ),  
+              ],
+            ),
+          ),
+        );  
 }
